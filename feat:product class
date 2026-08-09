@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+class Product {
+    String name;
+    double price;
+
+    Product(String n, double p) {
+        name = n;
+        price = p;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Name: ");
+        String n = sc.nextLine();
+
+        System.out.print("Price: ");
+        double p = sc.nextDouble();
+
+        Product x = new Product(n, p);
+
+        System.out.println("\nProduct Added!");
+        System.out.println("Name: " + x.name);
+        System.out.println("Price: ₹" + x.price);
+    }
+}
