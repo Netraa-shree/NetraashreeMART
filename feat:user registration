@@ -1,0 +1,84 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class CustomerAccount {
+    String name;
+    String email;
+    String password;
+    String role;
+
+    CustomerAccount(String name, String email, String password, String role) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+}
+
+public class RegistrationTest {
+
+    static Scanner sc = new Scanner(System.in);
+    static ArrayList<CustomerAccount> accounts = new ArrayList<>();
+
+    public static void main(String[] args) {
+
+        System.out.println("===== USER REGISTRATION =====");
+
+        System.out.print("Enter Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Email: ");
+        String email = sc.nextLine();
+
+        System.out.print("Create Password: ");
+        String password = sc.nextLine();
+
+        System.out.println("\nSelect Role");
+        System.out.println("1. Buyer");
+        System.out.println("2. Seller");
+        System.out.print("Enter your choice: ");
+
+        int choice = sc.nextInt();
+
+        String role;
+
+        if (choice == 1) {
+            role = "BUYER";
+        } 
+        else if (choice == 2) {
+            role = "SELLER";
+        } 
+        else {
+            System.out.println("Invalid role!");
+            return;
+        }
+
+        if (name.trim().isEmpty() ||
+            email.trim().isEmpty() ||
+            password.isEmpty()) {
+
+            System.out.println("Registration failed!");
+            System.out.println("All fields are required.");
+            return;
+        }
+
+        for (CustomerAccount user : accounts) {
+
+            if (user.email.equalsIgnoreCase(email)) {
+                System.out.println("Email already registered!");
+                return;
+            }
+        }
+
+        CustomerAccount newUser =
+                new CustomerAccount(name, email, password, role);
+
+        accounts.add(newUser);
+
+        System.out.println("\nRegistration Successful!");
+        System.out.println("-------------------------");
+        System.out.println("Name  : " + newUser.name);
+        System.out.println("Email : " + newUser.email);
+        System.out.println("Role  : " + newUser.role);
+    }
+}
