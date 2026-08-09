@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class UserLogin {
+
+    public static void login() {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("\n===== USER LOGIN =====");
+
+        System.out.print("Email: ");
+        String email = sc.nextLine();
+
+        System.out.print("Password: ");
+        String password = sc.nextLine();
+
+        CustomerAccount loggedUser = null;
+
+        // Search registered users
+        for (int i = 0; i < Registration.accounts.size(); i++) {
+
+            CustomerAccount user = Registration.accounts.get(i);
+
+            if (user.email.equalsIgnoreCase(email)) {
+
+                if (user.password.equals(password)) {
+                    loggedUser = user;
+                }
+
+                break;
+            }
+        }
+
+        if (loggedUser != null) {
+            System.out.println("\nLogin Successful!");
+            System.out.println("Welcome, " + loggedUser.name);
+            System.out.println("Role: " + loggedUser.role);
+        } else {
+            System.out.println("\nInvalid Email or Password!");
+        }
+    }
+}
