@@ -1,0 +1,15 @@
+public class Exit {
+
+    static void exit() {
+
+        System.out.println("===== NETRAA MART =====");
+        System.out.println("Thank You for Shopping at NETRAA Mart!");
+        System.out.println("Visit Again!");
+
+        System.exit(0);
+    }
+
+    public static void main(String[] args) {
+
+        exit();
+    }
