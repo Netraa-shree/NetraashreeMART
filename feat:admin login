@@ -1,27 +1,35 @@
-import java.util.Scanner;
-
+ import java.util.Scanner;
+class Admin {
+    String username;
+    String password;
+    Admin(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+}
 public class AdminLogin {
-
-    static Scanner sc = new Scanner(System.in);
-
-    public static void adminLogin() {
-
-        System.out.println("\n--- ADMIN LOGIN ---");
-
-        System.out.print("Enter Admin Email: ");
-        String email = sc.nextLine();
-
+    static boolean adminLogin(Scanner sc, Admin admin) {
+        System.out.println("===== ADMIN LOGIN =====");
+        System.out.print("Enter Admin Username: ");
+        String username = sc.nextLine();
         System.out.print("Enter Admin Password: ");
         String password = sc.nextLine();
-
-        if (email.equals("admin@mart.com")
-                && password.equals("admin123")) {
-
-            System.out.println("Admin login successful!");
-            System.out.println("Welcome Admin!");
-
+        if (username.equals(admin.username)
+                && password.equals(admin.password)) {
+            System.out.println("\nAdmin Login Successful!");
+            return true;
         } else {
-            System.out.println("Invalid admin credentials!");
+            System.out.println("\nInvalid Admin Credentials!");
+            return false;
         }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Admin admin = new Admin("admin", "admin123");
+        boolean loginSuccess = adminLogin(sc, admin);
+        if (loginSuccess) {
+            System.out.println("Welcome Admin!");
+        }
+        sc.close();
     }
 }
