@@ -1,0 +1,37 @@
+import java.util.ArrayList;
+class Product {
+    String name;
+    double price;
+    Product(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+}
+public class Checkout {
+    static void checkout(ArrayList<Product> cart) {
+        System.out.println("===== CHECKOUT =====");
+        if (cart.isEmpty()) {
+            System.out.println("Cart is Empty.");
+            return;
+        }
+        double total = 0;
+        for (Product product : cart) {
+            System.out.println(
+                    product.name
+                    + " - ₹"
+                    + product.price);
+            total += product.price;
+        }
+        System.out.println("------------------");
+        System.out.println("Total Bill = ₹" + total);
+        System.out.println("Order Placed Successfully!");
+        cart.clear();
+    }
+    public static void main(String[] args) {
+        ArrayList<Product> cart = new ArrayList<>();
+        cart.add(new Product("Laptop", 45000));
+        cart.add(new Product("Headphone", 1500));
+        cart.add(new Product("Mouse", 500));
+        checkout(cart);
+    }
+}
